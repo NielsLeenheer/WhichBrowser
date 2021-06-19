@@ -27,11 +27,6 @@ trait Mobile
         $this->detectGenericMobileLocations($ua);
     }
 
-
-
-
-
-
     /* Generic markers */
 
     private function detectGenericMobile($ua)
@@ -40,7 +35,6 @@ trait Mobile
             $this->data->device->type = Constants\DeviceType::MOBILE;
         }
     }
-
 
     /* Microsoft KIN */
 
@@ -68,7 +62,6 @@ trait Mobile
         }
     }
 
-
     /* Nokia */
 
     private function detectNokia($ua)
@@ -78,7 +71,7 @@ trait Mobile
         }
 
         if (preg_match('/Nokia[- \/]?([^\/\);]+)/ui', $ua, $match)) {
-            if ($match[1] == 'Browser') {
+            if ($match[1] === 'Browser') {
                 return;
             }
 
@@ -136,7 +129,6 @@ trait Mobile
             $this->identifyBasedOnIdentifier();
         }
     }
-
 
     /* Samsung */
 
@@ -238,7 +230,6 @@ trait Mobile
             $this->identifyBasedOnIdentifier();
         }
     }
-
 
     /* Generic models */
 
@@ -673,7 +664,6 @@ trait Mobile
             'manufacturer'  => 'UTStarcom'
         ]);
 
-
         $this->data->device->identifyModel('/vk-(vk[0-9]+)/u', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'VK Mobile',
@@ -732,7 +722,6 @@ trait Mobile
 
         $this->identifyBasedOnIdentifier();
     }
-
 
     /* Japanese models */
 
@@ -995,7 +984,6 @@ trait Mobile
             }
         }
 
-
         /* Finally identify it based on carrier */
 
         $this->data->device->identifyModel('/\(([A-Z]+[0-9]+[A-Z])[^;]*; ?FOMA/ui', $ua, [
@@ -1043,8 +1031,6 @@ trait Mobile
             $this->identifyBasedOnId($this->data->device->model);
         }
     }
-
-
 
     /* Device models not identified by a prefix */
 
